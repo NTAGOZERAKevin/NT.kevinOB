@@ -1,0 +1,1796 @@
+/* tsParticles styling  */
+  #tsparticles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Push behind all content */
+    pointer-events: none;
+  }
+
+.language-toggle {
+  position: relative;
+  display: inline-block;
+}
+
+.language-menu {
+  position: absolute;
+  top: 30px;
+  right: 0;
+  background-color: #222;
+  color: white;
+  border: 1px solid yellow;
+  padding: 5px;
+  font-size: 14px;
+  z-index: 1000;
+  display: none;
+}
+
+.language-menu ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.language-menu li {
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.language-menu li:hover {
+  background-color: #444;
+}
+
+.header-icons {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+#moon-icon,
+#language-icon {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  font-size: 20px !important;
+}
+
+.language-toggle {
+  position: relative;
+}
+
+.language-toggle .language-menu {
+  position: absolute;
+  top: 36px;
+  right: 0;
+  background: #fff;
+  color: #000;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+  display: none;
+  z-index: 2000;
+  min-width: 160px;
+  overflow: hidden;
+}
+
+.language-toggle.open .language-menu {
+  display: block;
+}
+
+.language-toggle .language-menu ul {
+  list-style: none;
+  margin: 0;
+  padding: 6px 0;
+}
+
+.language-toggle .language-menu li {
+  padding: 10px 14px;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.language-toggle .language-menu li:hover {
+  background: #f5f5f5;
+}
+
+body.dark-mode .language-toggle .language-menu {
+  background: #151515;
+  color: #fff;
+  border: 1px solid #333;
+}
+
+body.dark-mode .language-toggle .language-menu li:hover {
+  background: rgba(255,255,255,0.04);
+}
+
+/* Small responsive tweak to keep menu inside viewport */
+@media (max-width: 480px) {
+  .language-toggle .language-menu {
+    right: 8px;
+    left: auto;
+  }
+}
+
+
+
+.falling-dots-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.dot {
+  position: absolute;
+  border-radius: 50%;
+  background-color: rgba(125, 107, 3, 0.648);
+  box-shadow: 0 0 6px rgba(255, 255, 0, 0.8);
+  animation: fall linear infinite;
+}
+.dark-mode .dot {
+  background-color: rgba(255, 215, 0, 0.8);
+  box-shadow: 0 0 8px rgba(255, 215, 0, 1);
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(0);
+    opacity: 0.9;
+  }
+  100% {
+    transform: translateY(100vh);
+    opacity: 0;
+  }
+}
+
+
+/*Generate multiple dots with different delays and sizes */
+
+
+
+/* ===== Loader Styles ===== */
+#loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  font-size: 16px;
+}
+
+#loader h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+#loader .highlight {
+  color: rgb(255, 183, 0);
+  text-shadow: 0 0 10px rgba(255, 253, 253, 0.995);
+  font-size: 3rem;
+}
+
+#loader .loader {
+  width: 250px;
+  height: 8px;
+  background: #333;
+  border-radius: 5px;
+  margin: 20px 0;
+  overflow: hidden;
+}
+
+#loader .loader-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(to right, orange, darkgray);
+  animation: fill 3s ease-in-out forwards;
+}
+
+@keyframes fill {
+  to { width: 100%; }
+}
+
+#loader .message {
+  font-size: 1rem;
+  color: #ccc;
+  animation: fadeIn 2s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+#loader .kevin {
+  color: #00bfff;
+  font-size: 3.5rem;
+  font-family: 'Segoe Script', cursive;
+  text-shadow: 2px 2px 8px #222, 0 0 10px #00bfff88;
+  letter-spacing: 2px;
+  font-weight: bold;
+}
+
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+.ab2{
+    display: none;
+}
+.to{
+    display: none;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding:0;
+    background-color: #ece9e9d3;
+    color: #333;
+    overflow-x: hidden;
+    font-size: 12px;  
+}
+/* nav start */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #ece9e988;
+    color: rgb(3, 3, 3);
+    position: fixed;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+   
+}
+.menu-toggle{
+  display: none;
+
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 40px;
+    margin: 10px;
+   
+
+}
+
+nav a {
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255, 255, 255, 0); /* Semi-transparent */
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    padding: 15px 30px;
+    z-index: 1000;
+   
+  }
+  
+  /* When scrolling */
+  header.scrolled {
+    background-color: rgba(255, 255, 255, 0.826);
+ backdrop-filter: blur(10px); /* ✨ MAGIC HERE ✨ */
+  -webkit-backdrop-filter: blur(10px); /* Safari support */
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 26px;
+    
+  }
+  
+  /* Nav styles remain the same */
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: px;
+    margin: 0;
+    padding: 0;
+  }
+  
+  nav a {
+    text-decoration: none;
+    color: #000;
+    font-weight: bold;
+    
+  }
+  
+/* end of nav */
+
+#home {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 120px;
+}
+
+.profile img {
+    width: 440px;
+    height: 467px;
+    border-radius: 50%;   
+     margin-left: 15%;
+}
+.profile img:hover{
+    transform: scale(1.05);
+    transition: transform 0.5s ease;
+}
+
+
+.text2{
+    color: darkred;
+    font-size: 35px;
+    
+}
+
+
+
+
+.dev-about {
+    display: flex;
+    align-items: flex-start; /* Push content to the top */
+    justify-content: space-between;
+    width: 100%;
+    margin: 20px auto;
+    background: #fff;
+    box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
+    padding: 70px;
+    object-fit: cover;
+}
+
+
+
+.about-left img {
+    width: 435px;
+    height: 550px;
+    margin-bottom: 10zx;
+    border-radius: 15px;
+    margin-right: 100px;
+}
+
+.about-right {
+    width: 50%;
+    text-align: left;
+    margin-bottom: -20em;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Align content to the top */
+    gap: 10px; /* Optional: add spacing between elements */
+}
+
+.about-right p {
+    font-size: 18px;
+    color: #555;
+    margin-bottom: 60px;
+ 
+    
+}
+
+.info, .education {
+    margin-bottom: 45px;
+}
+
+.info ul {
+    list-style: none;
+    padding: 0;
+}
+
+.info li {
+    font-size: 16px;
+    color: #333;
+
+}
+.info h3{
+    color: #000000;
+    font-size:20px;
+  
+}
+.education h3{
+    color: #000000;
+    font-size: 20px;
+
+}
+
+.education p {
+    font-size: 16px;
+    color: #444;
+    
+}
+.light {
+    color: #FFD700 !important; /* Yellow */
+    font-size: 20px;
+}
+
+.highlight {
+    color: #FFD700 !important; /* Yellow */
+    font-family: 'Brush Script MT', cursive;
+    font-size: 80px;
+    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+}
+.intro h2{
+    font-size:60px;
+    color: #000000;
+}
+.intro h3{
+    font-size: 40px;
+    color: #000000ac;
+}
+.light{
+    color: #FFD700;
+    font-size: 20px;
+} 
+.highlight1{
+    color: rgba(9, 9, 241, 0.363);
+    font-size: 20px;
+}
+
+.par {
+    text-align: center;
+    margin: 20px;
+    
+ 
+}
+.do{
+  margin-bottom: 100px;
+    
+}
+.par p{
+    display: none;
+}
+  .bodys {
+    font-family: Arial, sans-serif;
+    background-color: #ece9e9d3;
+    color: rgba(0, 0, 0, 0.833);
+    text-align: center;
+    padding-top: 14%;
+    padding-bottom: 10%;
+}
+  .testimonial-section h2 {
+    font-size: 40px;
+    color: #000;
+   
+}
+
+.testimonial-container {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    
+}
+
+.testimonial-box {
+    background: rgba(174, 171, 171, 0.055);
+    border: 1px solid #2222226f;
+    padding: 20px;
+    border-radius: 10px;
+    width: 270px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s;
+}
+
+.testimonial-box:hover {
+    box-shadow: 0 0 16px rgba(0, 0, 0, 0.317);
+    background: rgba(174, 171, 171, 0.055);
+    transform: scale(1.05);
+}
+
+img {
+    width: 100px;
+    height: 100px;
+    border-radius: 100%;
+    margin-bottom: 10px;
+}
+
+.stars {
+    color: gold;
+    font-size: 20px;
+}
+
+h4 {
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+#about {
+    font-size: 50px;
+    opacity: 0.8;
+ 
+}
+#experience{
+    font-size:50px;
+    opacity: 0.8;
+}
+#skills{
+    font-size:50px;
+    opacity: 0.8;
+}
+#contact{
+    opacity: 0.8;
+    font-size: 60px;
+
+}
+#clients {
+    font-size: 50px;
+    opacity: 0.8;
+}
+#projects{
+    opacity: 0.8;
+}
+
+#about,
+#experience,
+#skills,
+#contact,
+#projects,
+#clients{
+    scroll-margin-top: 200px;
+}
+
+
+.containers{
+    background-color: #ece9e9d3;
+    color: rgb(0, 0, 0);
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    padding: 80px;
+    margin-top: -1.6%;
+    
+}
+
+
+.left {
+    text-align: center;
+    border-right: 1px solid #333;
+    padding-right: 200px;
+    position: relative;
+    
+}
+
+.experience-number {
+    font-size: 300px;
+    position: relative;
+}
+
+.experience-text {
+    margin-top: 10px;
+    font-size: 20px;
+}
+
+.right {
+    flex: 2;
+    padding-left: 20px;
+}
+
+h2 {
+    font-size: 36px;
+}
+
+.p1 {
+    font-size: 14px;
+    color: #211f1f;
+    padding-right:  10%;
+}
+
+.progress-container {
+    margin-top: 20px;
+}
+
+.progress-item {
+    margin-bottom: 10px;
+}
+
+.progress-bar {
+    width: 100%;
+    background-color: #000000; /* Yellow */
+    height: 10px;
+    border-radius: 5px;
+}
+
+.progress {
+    height: 100%;
+    background-color: darkred;
+}
+
+
+
+.body1 {
+    background-color:#ece9e9d3;
+    color: #000000;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin-top: -69px;
+}
+.containerss {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+}
+.left2 {
+    width: 45%;
+    font-size: 15px;
+    margin-top: 20px;
+}
+.right2 {
+    width: 45%;
+}
+.k1 {
+    font-size: 40px;
+}
+.text{
+    font-size: 16px;
+    line-height: 1.5em;
+    color: #000000;
+    margin-right:100px;
+    margin-top: 95px;
+
+}
+
+.contact-button {
+    background-color: darkred;
+    color: #ffffff;
+    padding: 10px 20px;
+    text-align: center;
+    display: inline-block;
+    margin-top: 20px;
+    text-decoration: none;
+    border-radius: 5px;
+}
+.skills {
+    list-style: none;
+    padding: 0;
+}
+.skills li {
+    margin-bottom: 20px;
+}
+.skill-name {
+    font-size: 1.2em;
+}
+.progress-bar {
+    background-color: darkred;
+     height: 10px;
+    border-radius: 5px;
+    margin-top: 5px;
+    position: relative;
+}
+.progress-bal {
+    background-color: #1413137d;
+    height: 10px;
+    border-radius: 5px;
+    margin-top: 5px;
+    position: relative;
+}
+
+.progress-bar span {
+    position: absolute;
+    right: 0;
+    top: -25px;
+    font-size: 0.8em;
+    background-color: #e0cfcffb;
+    padding: 2px 5px;
+    border-radius: 3px;
+}
+.webdesign { width: 100%; }
+.photography { width: 80%; }
+.coding { width: 90%; }
+.copywriting { width: 60%; }
+
+
+
+.body2 {
+  background-color: white;
+  color: rgb(0, 0, 0);
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 119vh;
+  padding: 40px 0;
+}
+
+.contact-section {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 32px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.contact-info {
+  flex: 1 1 30%;
+  min-width: 260px;
+  margin-top: 50px;
+  margin-left: 60px;
+}
+
+.contact-form-wrapper {
+  flex: 1 1 40%;
+  min-width: 320px;
+  display: flex;
+  justify-content: center;
+}
+
+.contact-form {
+  background: white;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 0 16px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 600px;
+  
+}
+
+input,
+textarea {
+  width: 80%;
+  padding: 12px;
+  margin: 10px 0;
+  background: #333;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  margin-left: 40px;
+}
+
+button {
+  background: darkred;
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  border-radius: 40px;
+  margin-top: 10px;
+  width: fit-content;
+  margin-left:40px ;
+}
+
+button:hover {
+  background: red;
+}
+
+p {
+  font-size: 16px;
+}
+
+
+
+.body4 {
+    font-family: Arial, sans-serif;
+    color:rgba(9, 9, 241, 0.363);
+    text-align: center;
+    margin: 50px auto;
+    margin-bottom: 0px;
+    margin-top: 0px;
+    background-color:white;
+    padding-top: 120px; /* Adjust spacing */
+    padding-bottom: 100px;
+
+}
+
+/* Title Styling */
+.projects1 {
+    color: #000;
+    font-size: 35px;
+    font-weight: bold; /* Makes title stand out */
+    margin-bottom: 40px; /* Controlled spacing */
+
+}
+
+
+
+/* Card container */
+.service-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+
+}
+
+/* Service card */
+.card {
+    background-color: #fffffff6; /* Changed from rgba(255, 192, 203, 0.772) to white */
+    padding: 40px;
+    width: 280px;
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s;
+    border: 1px solid ;
+    border-color:  #0000003a;
+}
+.card:hover{
+   box-shadow: 0 0 16px rgba(0, 0, 0, 0.317);
+    background: rgb(255, 255, 255);
+    transform: scale(1.05);
+}
+
+/* Headings */
+.card h2 {
+    font-size: 1.4em;
+    margin-bottom: 15px;
+   color:  rgba(9, 9, 241, 0.363);
+}
+
+/* Paragraph */
+.card p {
+    font-size: 1em;
+    margin-bottom: 20px;
+    color: #000;
+}
+
+/* Button */
+.card button {
+    background-color: #ff0055;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+
+/*footer*/
+.body3 {
+    font-family: Arial, sans-serif;
+    background-color: #333;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+}
+.footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 80px;
+    background-color: #222;
+}
+
+.footer-section {
+    flex: 1;
+    margin: 0 15px;
+}
+.footer-section h3 {
+    color: #FFD700 !important; /* Yellow */
+    padding-bottom: 5px;
+    font-size: 25px;    
+}
+.footer-section p, .footer-section ul {
+    margin: 20px 0;
+}
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+.footer-section ul li {
+    margin: 5px 0;
+}
+.footer-section ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+.footer-section ul li a:hover {
+    text-decoration: underline;
+}
+.social-icons {
+    display: flex;
+    gap: 10px;
+}
+.social-icons a {
+    color: yellow;
+    font-size: 24px;
+     background: none !important;
+    border-radius: 12px;
+    padding: 7px;
+    height: 40px;
+    width: 37px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s, color 0.3s, text-decoration 0.3s;
+    text-decoration: none !important; /* Remove underline */
+}
+
+/* Instagram icon color in light mode */
+.social-icons a.instagram-btn,
+.social-icons a[href*="instagram"] {
+   
+    background: linear-gradient(45deg, #f58529, #dd2a7b, #8134af, #515bd4) !important;
+    color: #fff !important;
+}
+
+.social-icons a[href*="github"] {
+    background: #000000 !important;
+    color: #fff !important;
+}
+
+/* All icons: yellow in dark mode, no underline */
+body.dark-mode .social-icons a {
+    color: #FFD700 !important;
+    background: none !important;
+    text-decoration: none !important;
+}
+body.dark-mode .social-icons a.instagram-btn,
+body.dark-mode .social-icons a[href*="instagram"] {
+    color: #FFD700 !important;
+    background: none !important;
+}
+
+/* Optional: Instagram icon hover effect for visibility */
+.social-icons a.instagram-btn,
+body.dark-mode.social-icons a[href*="instagram"] {
+    background: #000000 !important;
+    color: #fff !important;
+}
+
+.nt{
+    color: white;
+    text-decoration: none;
+    transition: color 1s ease,transform 0.5s ease;
+
+}
+.nt:hover{
+    color: red;
+      transform: scale(1.07);
+
+}
+
+/*end of footer */
+
+
+/* ===================== */
+/* 💻 Tablet , phone & Small Laptop Responsiveness */
+/* ===================== */
+@media screen and (max-width: 1024px) {
+  #home {
+    flex-direction: column;
+    padding: 80px 20px 40px;
+    text-align: center;
+  }
+  
+  .profile img {
+    width: 280px;
+    height: 280px;
+    margin-left: 0;
+  }
+  .dev-about {
+    flex-direction: column;
+    padding: 40px 20px;
+    width: 100%;
+  }
+  .about-left img {
+    width: 100%;
+    height: auto;
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
+  .about-right {
+    width: 100%;
+    margin: 0 auto;
+    text-align: left;
+  }
+  .containers {
+    flex-direction: column;
+    padding: 120px 20px;
+    height: auto;
+    gap: 40px;
+    padding-top: 20%;
+    padding-bottom: 20%;
+  }
+  .left, .right {
+    padding: 0;
+    border: none;
+    text-align: center;
+  }
+  .experience-number {
+    font-size: 150px;
+  }
+  .experience-text {
+    font-size: 18px;
+  }
+  .containerss {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+  .left2, .right2 {
+    width: 90%;
+    margin: 0;
+  }
+  .text {
+    margin: 20px 0;
+  }
+  .containersss {
+    flex-direction: column;
+    padding: 40px 20px;
+  }
+  .service-container {
+    flex-direction: column;
+    gap: 30px;
+  }
+  .card {
+    width: 90%;
+  }
+  .footer {
+    flex-direction: column;
+    padding: 40px 20px;
+    text-align: center;
+  }
+  .footer-section {
+    margin-bottom: 30px;
+  }
+  .testimonial-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  .testimonial-box {
+    margin-bottom: 50px;
+    width: 90%;
+  }
+  input, textarea {
+    width: 100%;
+  }
+  .contact-form {
+    width: 100%;
+    margin: 0;
+  }
+  .contact-info {
+    margin-left: 0;
+  }
+
+  /* Make contact section stack vertically with contact-info first */
+  .contact-section {
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+  }
+  .contact-info {
+    order: 0; /* appear first */
+    width: 100%;
+    max-width: 720px;
+    margin: 0 auto 8px auto;
+    padding: 0 16px;
+  }
+  .contact-form-wrapper {
+    order: 1; /* appear second */
+    width: 100%;
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 16px;
+    display: flex;
+    justify-content: center;
+  }
+  .contact-form {
+    width: 100%;
+    max-width: 720px;
+  }
+  input, textarea {
+    width: 100%;
+    margin-left: 0;
+  }
+}
+
+/* ===================== */
+/* 📱 Mobile Responsiveness */
+/* ===================== */
+
+@media screen and (max-width: 480px) {
+  /* Show hamburger menu toggle */
+  .menu-toggle {
+    display: block !important;
+    position: fixed;
+    top: 20px;
+    right: 160px;
+    font-size: 30px;
+    cursor: pointer;
+    z-index: 1100;
+    color: #000000 !important; /* Black in light mode (changed) */
+  }
+
+  /* Hide nav links by default */
+  nav ul {
+    display: none !important;
+    flex-direction: column;
+    position: fixed;
+    top: 60px;
+    left: 0;
+    width: 100vw;
+    background: rgba(253, 253, 253, 0.98);
+    z-index: 1200;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+    padding: 10px 0;
+    margin: 0;
+    z-index: 1099;
+  }
+
+  /* Fix nav links to be always visible at the top when menu is open */
+  nav ul {
+    /* ...existing code... */
+    position: fixed;
+    top: 60px;
+    left: 0;
+    width: 100vw;
+    background-color: rgba(186, 184, 184, 0.808);
+    backdrop-filter: blur(10px);
+    z-index: 1200;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+  }
+
+  /* Ensure nav links are above other content */
+  nav ul.show {
+    display: flex !important;
+  }
+
+  /* Nav links styling */
+  nav ul li {
+    text-align: center;
+    margin: 0;
+    padding: 0;
+  }
+  .dark-mode nav ul {
+ background-color: rgba(0, 0, 0, 0.893);
+ backdrop-filter: blur(10px);
+    color: rgb(255, 255, 255)!important; /* White text in dark mode */
+  }
+  body.dark-mode header nav ul#nav-links li a{
+  color: #ffffff !important;
+  transition: color 0.3s;
+}
+
+  nav ul li a {
+    display: block;
+    font-size: 18px;
+    padding: 12px 0;
+    color: #000 !important;
+  }
+
+  /* Stack home section vertically & center text */
+  #home {
+    flex-direction: column !important;
+    padding: 80px 20px 40px !important;
+    text-align: center !important;
+  }
+
+  .text2{
+    font-size: 16px;
+
+  }
+  /* Profile image smaller and centered */
+  .profile img {
+    width: 250px !important;
+    height: 250px !important;
+    margin-left: 0 !important;
+  }
+
+  /* Show your .ab2, hide .ab1 on mobile */
+  .ab1 {
+    display: none !important;
+  }
+  .ab2 {
+    display: block !important;
+  }
+.par p{
+    display: block !important;
+    font-size: 20px !important;
+    margin: 20px auto !important;
+    color: #00000063;
+  }
+  /* Intro headings smaller */
+  .intro h2 {
+    font-size: 32px !important;
+  }
+  .intro h3 {
+    font-size: 20px !important;
+  }
+
+  /* Highlight font size smaller */
+  .highlight {
+    font-size: 40px !important;
+  }
+
+  /* dev-about stacked vertically */
+  .dev-about {
+    flex-direction: column !important;
+    padding: 40px 20px !important;
+    width: 100% !important;
+  }
+  .about-left img {
+    width: 100% !important;
+    height: auto !important;
+    margin-right: 0 !important;
+    margin-bottom: 20px !important;
+  }
+  .about-right {
+    width: 100% !important;
+    margin: 0 auto !important;
+    text-align: left !important;
+  }
+  .about-right h1 {
+    font-size: 28px !important;
+    margin-bottom: 20px !important;
+  }
+  .about-right p {
+    font-size: 16px !important;
+  }
+
+  /* Containers flex direction column */
+  .containers {
+    flex-direction: column !important;
+    padding: 240px 20px !important;
+    height: auto !important;
+    gap: 80px !important;
+    padding-top: 40% !important;
+    padding-bottom: 60% !important;
+    background-color:  #ece9e900 !important;
+  }
+  .left, .right {
+    padding: 0 !important;
+    border: none !important;
+    text-align: center !important;
+  }
+  .experience-number {
+    font-size: 100px !important;
+  }
+  .experience-text {
+    font-size: 16px !important;
+  }
+
+  /* Containerss and related */
+  .containerss {
+    flex-direction: column !important;
+    align-items: center !important;
+    width: 100% !important;
+  }
+  .left2, .right2 {
+    width: 90% !important;
+    margin: 0 !important;
+  }
+  .text {
+    margin: 20px 0 !important;
+  }
+
+  /* Contact form full width */
+  .containersss {
+    flex-direction: column !important;
+    padding: 40px 20px !important;
+  }
+  .service-container {
+    flex-direction: column !important;
+    gap: 30px !important;
+  }
+  .card {
+    width: 90% !important;
+  }
+
+  /* Footer stacked and centered */
+  .footer {
+    flex-direction: column !important;
+    padding: 40px 20px !important;
+    text-align: center !important;
+  }
+  .footer-section {
+    margin-bottom: 30px !important;
+  }
+
+  /* Testimonial container stacked */
+  .testimonial-container {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+  .testimonial-box {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    width: 90% !important;
+  }
+
+  /* Adjust contact inputs full width */
+  input, textarea {
+    width: 100% !important;
+  }
+  .contact-form {
+    width: 100% !important;
+    margin: 0 !important;
+  }
+  .contact-info {
+    margin-left: 0 !important;
+  }
+
+  /* Hide .do, show .to */
+  .do {
+    display: none !important;
+  }
+  .to {
+    display: block !important;
+    font-size: 40px;
+  }
+}
+
+
+
+/* ===================== */
+/* 📱📐 Extra Responsive Breakpoints for Tablets, Foldables, and Smart Displays */
+/* ===================== */
+
+/* Large tablets, Surface Pro, iPad Pro landscape, foldables (up to 1366px) */
+@media screen and (max-width: 1366px) {
+  .service-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+  }
+  .card {
+    /* No forced width here, use default */
+    margin-bottom: 40px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .testimonial-container {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+  }
+  /* Remove testimonial-box width/size override here */
+}
+
+/* Surface Duo (dual screen, portrait, ~540px–750px) and similar foldables */
+@media screen and (max-width: 750px) and (min-width: 520px) {
+  nav ul {
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: auto !important;
+    position: static !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    gap: 20px !important;
+  }
+  nav ul li {
+    width: auto;
+    text-align: center;
+  }
+  nav ul li a {
+    font-size: 18px !important;
+    padding: 12px 0 !important;
+  }
+  header {
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    padding: 15px 30px !important;
+    width: 100% !important; /* Changed from 100vw to 100% */
+    left: 0 !important;
+    right: 0 !important;
+    top: 0 !important;
+    position: fixed !important;
+    z-index: 1000 !important;
+    background: rgba(255,255,255,0.95) !important;
+    box-shadow: 0 4px 30  px rgba(0,0,0,0.08) !important;
+    font-size: unset !important; /* Remove forced font size */
+  }
+  /* Remove any header, header * font-size overrides here */
+  .dev-about {
+    flex-direction: column !important;
+    align-items: center !important;
+    padding: 40px 20px !important;
+    width: 100% !important;
+  }
+  .about-right {
+    width: 100% !important;
+    margin: 0 auto !important;
+    text-align: center !important;
+    order: -1 !important; /* Move above image */
+    margin-bottom: 20px !important;
+  }
+  .about-left img {
+    width: 100% !important;
+    height: auto !important;
+    margin-right: 0 !important;
+    margin-bottom: 20px !important;
+  }
+}
+
+/* iPad screens (portrait and landscape) */
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .service-container .card {
+    width: 80vw !important;
+    max-width: 520px !important;
+    min-width: 320px !important;
+    background-color: #fff !important;
+    box-shadow: 0 0 16px rgba(0,0,0,0.18) !important;
+  }
+  .testimonial-box {
+    width: 80vw !important;
+    max-width: 520px !important;
+    min-width: 320px !important;
+    font-size: 1.2em !important;
+  }
+  .dev-about {
+    flex-direction: column !important;
+    padding: 40px 20px !important;
+    width: 100% !important;
+    align-items: center !important;
+  }
+  .about-right {
+    width: 100% !important;
+    margin: 0 auto !important;
+    text-align: center !important;
+    order: -1 !important; /* Move above image */
+    margin-bottom: 20px !important;
+  }
+  .about-left img {
+    width: 100% !important;
+    height: auto !important;
+    margin-right: 0 !important;
+    margin-bottom: 20px !important;
+  }
+  .about-right > *:not(h1) {
+    display: none !important;
+  }
+  #darkModeToggle{
+   align-items:center;
+
+  }
+}
+
+@media (max-width: 900px) {
+    .bodys h2 {
+        font-size: 3em !important;
+    }
+}
+
+/* ===== Dark Mode Styles ===== */
+body.dark-mode,
+body.dark-mode .body2,
+body.dark-mode .bodys,
+body.dark-mode .body1,
+body.dark-mode .body3,
+body.dark-mode .dev-about,
+body.dark-mode .about-left,
+body.dark-mode .about-right,
+body.dark-mode .body4,
+body.dark-mode .service-container,
+body.dark-mode .card,
+body.dark-mode .containers,
+body.dark-mode .containerss,
+body.dark-mode .containersss {
+  background: #000 !important;
+  color: #fff !important;
+  border-color: #444 !important;
+  box-shadow: none !important;
+}
+
+/* Footer: keep accent color */
+body.dark-mode .footer,
+body.dark-mode .body3 {
+  background: #202030 !important;
+  color: #fff !important;
+}
+
+/* Make all text that is black or dark become white in dark mode */
+body.dark-mode,
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode h4,
+body.dark-mode h5,
+body.dark-mode h6,
+body.dark-mode p,
+body.dark-mode span,
+body.dark-mode li,
+body.dark-mode .p1,
+body.dark-mode .experience-text,
+body.dark-mode .about-right p,
+body.dark-mode .info li,
+body.dark-mode .education p,
+body.dark-mode .card p,
+body.dark-mode .projects1,
+body.dark-mode .text,
+body.dark-mode .contact-info,
+body.dark-mode .footer-section p,
+body.dark-mode .footer-section ul li a,
+body.dark-mode .testimonial-section h2 {
+  color: #fff !important;
+}
+
+body.dark-mode .progress-bar {
+  background-color:yellow!important;
+}
+
+body.dark-mode .progress {
+  background-color: #FFD700 !important;
+}
+body.dark-mode .progress-bar span {
+    background-color: #000000fb;
+}
+
+body.dark-mode .service-container .card h2 {
+  color: #FFD700 !important;
+}
+
+body.dark-mode .card button,
+body.dark-mode button,
+body.dark-mode .contact-button {
+  background: #FFD700 !important;
+  color: #181818 !important;
+}
+
+body.dark-mode input,
+body.dark-mode textarea {
+  background: #333 !important;
+  color: #fff !important;
+  border: 1px solid #555 !important;
+
+}
+
+body.dark-mode .testimonial-box {
+  background: #202030 !important;
+  color: #fff !important;
+  border-color: #444 !important;
+  box-shadow: none !important;
+
+}
+
+body.dark-mode .social-icons a {
+  color: #FFD700 !important;
+}
+
+body.dark-mode .projects1 {
+  color: #FFD700 !important;
+}
+
+body.dark-mode .bodys {
+  background-color: #000000 !important;
+  color: #f1f1f1 !important;
+}
+
+body.dark-mode .contact-form,
+body.dark-mode .card {
+  background: #202030 !important;
+  color: #fff !important;
+  border-color: #444 !important;
+  box-shadow: none !important;
+}
+
+/* Make nav links black by default (not scrolled, not dark mode) */
+nav ul#nav-links li a {
+  color: #000 !important;
+  transition: color 0.3s;
+}
+
+/* When header has .scrolled, nav links become black (not dark mode) */
+header.scrolled nav ul#nav-links li a {
+  color: #000 !important;
+  transition: color 0.3s;
+}
+
+/* In dark mode, nav links always stay white */
+body.dark-mode nav ul#nav-links li a{
+ 
+  color: #fffdfd !important;
+  transition: color 0.3s;
+}
+body.dark-mode header.scrolled nav ul#nav-links li a{
+  color: #ffffff !important;
+  transition: color 0.3s;
+}
+
+/* Yellow color for .light and .highlight only in dark mode */
+body.dark-mode .light,
+body.dark-mode .highlight {
+    color: #FFD700 !important;
+}
+
+body.dark-mode.progress {
+    height: 100%;
+    background-color: rgb(0, 0, 0);
+}
+
+/* Footer section titles yellow only in dark mode */
+body.dark-mode .footer-section h3 {
+    color: #FFD700 !important;
+}
+body.dark-mode header.scrolled {
+    background-color: rgba(37, 36, 36, 0.826);
+ backdrop-filter: blur(10px); /* ✨ MAGIC HERE ✨ */
+  -webkit-backdrop-filter: blur(10px); /* Safari support */
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 26px;
+    
+  }
+  body.dark-mode .text2 {
+    color: #FFD700 !important; /* Yellow */
+    font-size: 40px !important;
+  }
+
+@media screen and (max-width: 480px) {
+  body.dark-mode .text2 {
+    font-size: 16px !important;
+  }
+}
+
+#darkModeToggle {
+    background: #edecec !important;
+    color: #000000 !important;
+    border-radius: 50%;
+    padding: 8px 12px;
+    transition: background 0.3s, color 0.3s;
+}
+
+
+body.dark-mode #language-icon {
+  background: #222 !important;
+  color: #FFD700 !important;
+}
+
+.icon-cycle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #edecec;
+  border-radius: 50%;
+  width: 38px;
+  height: 38px;
+  box-shadow: 0 0 8px #ececec33;
+  margin: 0;
+  padding: 0;
+}
+body.dark-mode .icon-cycle {
+  background: #222 !important;
+}
+#language-icon {
+  color: #000000 !important;
+  font-size: 20px !important;
+  margin: 0;
+  padding: 0;
+}
+body.dark-mode #language-icon {
+  color: #FFD700 !important;
+}
+
+/* KevinAi Modal Overlay Styles */
+#kevinAi {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(10,10,10,0.98);
+  z-index: 2000;
+  overflow-y: auto;
+  box-shadow: 0 0 40px #000a;
+  padding: 0;
+  margin: 0;
+}
+@media (max-width: 600px) {
+  #kevinAi {
+    width: 100vw;
+    height: 100vh;
+    padding: 0;
+  }
+}
+
+
+
+/* ---------------- FLOATING BUTTON ---------------- */
+.whatsapp-float {
+      position: fixed;
+      bottom: 40px;
+      right: 40px;
+      display: flex;
+      align-items: center;
+      flex-direction: row-reverse;
+      gap: 6px;
+      z-index: 99999; /* ✅ ensures it's above footer */
+      pointer-events: auto; /* ✅ makes it clickable */
+    }
+
+    .whatsapp-float a.fa-whatsapp {
+      width: 60px;
+      height: 60px;
+      background-color: #03742c;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 40px;
+      color: white !important;
+      position: relative;
+      box-shadow: 0 0 15px rgba(0, 255, 0, 0.7);
+      transition: transform 0.2s ease-in-out;
+      text-decoration: none;
+      border: none; /* removes small line/border */
+    }
+
+    .whatsapp-float a.fa-whatsapp:hover {
+      transform: scale(1.1);
+      background-color: #1ebe5d;
+    }
+
+    .ask-anything-btn {
+      background: rgba(0, 0, 0, 0.144);
+      color: #ff9500;
+      border: none;
+      border-radius: 8px;
+      padding: 5px 12px;
+      font-family: 'Fira Mono', monospace;
+      font-size: 1.1em;
+      font-weight: 500;
+      letter-spacing: 1px;
+      box-shadow: 0 0 8px #ffb30088;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .ask-anything-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px #ffa617;
+    }
+
+    /* ---------------- CHAT WINDOW ---------------- */
+  
+.hide-on-loader {
+  display: none !important;
+}
+
+
+    @media (max-width: 600px) {
+      .whatsapp-float { bottom: 25px; right: 25px; }
+      #kevinAi { bottom: 100px; right: 20px; width: 90%; }
+      .chat-container { width: 100%; height: 480px; }
+    }
+
+
+
+

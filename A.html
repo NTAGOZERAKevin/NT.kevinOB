@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <style>
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden; /* ✅ disables scrollbars on the page */
+  height: 100%;
+}
+
+  .chat-container {
+  width: 100%;
+  height: 100%;
+  display: flex;  
+  flex-direction: column;
+   background-color:rgba(1, 1, 25, 0.85) ;
+  justify-content: space-between;
+  overflow: hidden; /* Prevents outer scroll */
+  box-shadow: 0 0 15px rgba(255, 166, 0, 0.3);
+  box-sizing: border-box;
+
+}
+
+    .chat-header {
+      background-color: #000000f9;
+      padding: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .header-center {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .ai-icon {
+      width: 28px;
+      height: 28px;
+      object-fit: contain;
+    }
+
+    .chat-header h2 {
+      font-size: 20px;
+      color: #ffb300;
+      margin: 0;
+    }
+
+    .done-btn {
+      position: absolute;
+      right: 15px;
+      top: 15px;
+      background-color: #ffb300;
+      color: #0a0a0a;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 13px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .done-btn:hover {
+      background-color: #ffcc33;
+    }
+
+
+
+  #chat-box {
+  flex: 1;
+  padding: 15px;
+  overflow-y: auto; /* ✅ allows internal scroll */
+  scrollbar-width: none; /* Firefox */
+}
+
+#chat-box::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
+}
+
+
+  
+    .chat-logo {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 30px 0;
+    }
+
+    .chat-logo img {
+      width: 150px;
+      height: 150px;
+      object-fit: contain;
+      margin-bottom: 10px;
+    }
+
+    .chat-logo h2 {
+      font-size: 22px;
+      color: #ffb300;
+      margin: 0;
+    }
+
+    .user-message,
+    .bot-message {
+      margin: 8px 0;
+      padding: 10px 14px;
+      border-radius: 12px;
+      display: inline-block;
+      word-wrap: break-word;
+      max-width: 75%;
+      animation: fadeIn 0.3s ease-in;
+    }
+
+    .user-message {
+      background-color: #da8d36;
+      color: white;
+      align-self: flex-end;
+      text-align: right;
+    }
+
+    .bot-message {
+      background-color: #1f1f1f;
+      color: #eee;
+      align-self: flex-start;
+      text-align: left;
+    }
+
+    .typing-indicator {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin: 8px 0;
+      padding: 10px 14px;
+      border-radius: 12px;
+      width: fit-content;
+      animation: fadeIn 0.3s ease-in;
+    }
+
+    .typing-indicator span {
+      width: 6px;
+      height: 6px;
+      background-color: #ffb300;
+      border-radius: 50%;
+      animation: bounce 1.4s infinite ease-in-out;
+    }
+
+    .typing-indicator span:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+
+    .typing-indicator span:nth-child(3) {
+      animation-delay: 0.4s;
+    }
+
+    @keyframes bounce {
+      0%, 80%, 100% {
+        transform: scale(0.8);
+        opacity: 0.3;
+      }
+      40% {
+        transform: scale(1.4);
+        opacity: 1;
+      }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(5px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .suggestions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+      padding: 10px;
+      background-color: #0e0e0e;
+    }
+
+    .suggestions button {
+      background-color: #1a1a1a;
+      color: #ffb300;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 13px;
+      transition: 0.3s;
+    }
+
+    .suggestions button:hover {
+      background-color: #ffb300;
+      color: #0a0a0a;
+    }
+
+    .input-area {
+      display: flex;
+      align-items: center;
+      padding: 10px;
+      background-color: #1a1a1a;
+      border-top: 1px solid #222;
+    }
+
+    .input-area input {
+      flex: 1;
+      padding: 10px 14px;
+      border: none;
+      border-radius: 25px;
+      outline: none;
+      background-color: #0e0e0e;
+      color: white;
+      font-size: 14px;
+    }
+
+    .input-area button {
+      background-color: #ffb300;
+      color: #000;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 25px;
+      margin-left: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .input-area button:hover {
+      background-color: #ffcc33;
+    }
+
+    .footer {
+      background-color: #1a1a1a;
+      text-align: center;
+      padding: 6px;
+      color: #ffb300;
+      font-size: 13px;
+      border-top: 1px solid #222;
+    }
+
+    .footer a {
+      color: #ffb300;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    #ai-warning {
+  display: none;
+  margin-top: 6px;
+  padding: 8px 12px;
+  background-color: #ffb30362; /* Yellow background */
+  color: #ffffff; /* Dark text for contrast */
+  font-size: 13px;
+  border-radius: 8px;
+  font-weight: bold;
+  text-align: center;
+}
+
+  </style>
+</head>
+<body>
+  <div class="chat-container">
+    <div class="chat-header">
+      <div class="header-center">
+        <img src="freepik1.png" alt="KevinAI Icon" class="ai-icon" />
+        <h2>KevinAI</h2>
+      </div>
+
+      <button class="done-btn" onclick="window.parent.document.getElementById('kevinai-wrapper').style.display='none'">Close</button>
+
+    </div>
+
+    <div id="chat-box">
+      <div class="chat-logo">
+        <img src="freepik1.png" alt="KevinAI Icon" />
+        <h2>KevinAI</h2>
+      </div>
+    </div>
+
+    <div class="suggestions">
+      <button>Creator</button>
+      <button>Python</button>
+      <button>Javascript</button>
+      <button>Rwanda</button>
+      <button>Who are you?</button>
+      <button>what is ai?</button>
+    </div>
+
+    <div class="input-area">
+      <input id="user-input" type="text" placeholder="Ask anything..." />
+      <button id="send-btn">Send</button>
+    </div>
+
+
+<div class="footer">
+  <span id="ai-info-trigger">
+    ℹ️ <a href="#">AI Info</a>
+  </span>
+  <div id="ai-warning">
+    ⚠️ KevinAI can make mistakes. Please verify important information.
+  </div>
+</div>
+
+  
+
+
+<script>
+
+ const _0x4b892e=_0x166f;(function(_0x1a90fd,_0x37630a){const _0x13da9f=_0x166f,_0x5df888=_0x1a90fd();while(!![]){try{const _0x204e0b=parseInt(_0x13da9f(0x1cb))/0x1*(-parseInt(_0x13da9f(0x1b2))/0x2)+-parseInt(_0x13da9f(0x1ca))/0x3*(parseInt(_0x13da9f(0x1c8))/0x4)+-parseInt(_0x13da9f(0x1bf))/0x5+-parseInt(_0x13da9f(0x196))/0x6*(parseInt(_0x13da9f(0x195))/0x7)+parseInt(_0x13da9f(0x194))/0x8*(-parseInt(_0x13da9f(0x1c2))/0x9)+-parseInt(_0x13da9f(0x1c1))/0xa+parseInt(_0x13da9f(0x1c0))/0xb;if(_0x204e0b===_0x37630a)break;else _0x5df888['push'](_0x5df888['shift']());}catch(_0x28fe51){_0x5df888['push'](_0x5df888['shift']());}}}(_0x5af9,0x199b5));const knowledge={'hello':_0x4b892e(0x18b),'hi':_0x4b892e(0x1bb),'what\x20is\x20ai?':_0x4b892e(0x1cc),'who\x20are\x20you':'I\x27m\x20KevinAI\x20—\x20a\x20smart\x20assistant\x20created\x20by\x20Kevin,\x20a\x20talented\x20web\x20developer\x20and\x20designer\x20based\x20in\x20Rwanda.\x20I\x20help\x20answer\x20questions,\x20explain\x20concepts,\x20and\x20make\x20learning\x20fun!','who\x20made\x20you':'I\x20was\x20created\x20by\x20Kevin\x20—\x20a\x20developer\x20passionate\x20about\x20clean\x20UI,\x20smart\x20assistants,\x20and\x20modern\x20web\x20design.','who\x20is\x20your\x20creator':_0x4b892e(0x19b),'rwanda':_0x4b892e(0x1bc),'capital\x20of\x20rwanda':_0x4b892e(0x198),'kenya':_0x4b892e(0x193),'capital\x20of\x20kenya':_0x4b892e(0x19d),'python':_0x4b892e(0x1b9),'javascript':_0x4b892e(0x1ad),'range\x20function\x20python':_0x4b892e(0x189),'mercury\x20planet':_0x4b892e(0x1ba),'area\x20of\x20square':_0x4b892e(0x191),'what\x20is\x20energy':'⚡\x20Energy\x20is\x20the\x20ability\x20to\x20do\x20work\x20—\x20it\x20exists\x20in\x20many\x20forms\x20like\x20heat,\x20motion,\x20or\x20electricity.','kevin':_0x4b892e(0x1a5)},sendBtn=document[_0x4b892e(0x1a1)]('send-btn'),userInput=document[_0x4b892e(0x1a1)]('user-input');function _0x166f(_0x15b3e1,_0x4c39de){const _0x5af998=_0x5af9();return _0x166f=function(_0x166fcd,_0x40b2c2){_0x166fcd=_0x166fcd-0x188;let _0x4932fa=_0x5af998[_0x166fcd];return _0x4932fa;},_0x166f(_0x15b3e1,_0x4c39de);}function displayMessage(_0x1f3147,_0x34393a){const _0x2d8d19=_0x4b892e,_0x175cf7=document[_0x2d8d19(0x18d)](_0x2d8d19(0x1a6));_0x175cf7[_0x2d8d19(0x1c7)][_0x2d8d19(0x1b0)](_0x34393a==='user'?_0x2d8d19(0x1aa):'bot-message'),_0x175cf7[_0x2d8d19(0x1a3)]=_0x1f3147,chatBox[_0x2d8d19(0x1a9)](_0x175cf7),chatBox[_0x2d8d19(0x1b4)]=chatBox[_0x2d8d19(0x1a4)];}function getAIResponse(_0x4c6b1d){const _0x33b2f9=_0x4b892e,_0x22af22=_0x4c6b1d[_0x33b2f9(0x1c4)]()[_0x33b2f9(0x1c6)]();if(knowledge[_0x22af22])return knowledge[_0x22af22];if(_0x22af22[_0x33b2f9(0x19f)]('who\x20are\x20you'))return knowledge[_0x33b2f9(0x18a)];if(_0x22af22[_0x33b2f9(0x19f)](_0x33b2f9(0x190))||_0x22af22[_0x33b2f9(0x19f)](_0x33b2f9(0x1b5))||_0x22af22[_0x33b2f9(0x19f)]('made\x20you'))return knowledge[_0x33b2f9(0x18e)];if(_0x22af22[_0x33b2f9(0x19f)](_0x33b2f9(0x1c5)))return _0x33b2f9(0x1a7);if(_0x22af22['includes'](_0x33b2f9(0x1a2)))return'I\x27m\x20great\x20😄,\x20thanks\x20for\x20asking!\x20How\x20about\x20you?';if(_0x22af22[_0x33b2f9(0x19f)]('your\x20name'))return _0x33b2f9(0x192);const _0x24ec4d=[_0x33b2f9(0x1ae),'That’s\x20interesting!\x20Tell\x20me\x20more.',_0x33b2f9(0x19c),'Good\x20question!\x20Let’s\x20explore\x20that\x20another\x20time\x20😄.'];return _0x24ec4d[Math[_0x33b2f9(0x19e)](Math[_0x33b2f9(0x1be)]()*_0x24ec4d[_0x33b2f9(0x1a8)])];}sendBtn[_0x4b892e(0x1cd)](_0x4b892e(0x1ab),()=>{const _0x4d009d=_0x4b892e,_0x35075c=userInput[_0x4d009d(0x1c9)]['trim']();if(!_0x35075c)return;displayMessage(_0x35075c,_0x4d009d(0x19a)),userInput[_0x4d009d(0x1c9)]='';const _0x5811d2=document['createElement'](_0x4d009d(0x1a6));_0x5811d2[_0x4d009d(0x1c7)]['add'](_0x4d009d(0x199)),_0x5811d2[_0x4d009d(0x1b3)]=_0x4d009d(0x1b1),chatBox[_0x4d009d(0x1a9)](_0x5811d2),chatBox['scrollTop']=chatBox['scrollHeight'],setTimeout(()=>{const _0xaafd0c=_0x4d009d;_0x5811d2[_0xaafd0c(0x1a0)]();const _0x220255=getAIResponse(_0x35075c);displayMessage(_0x220255,_0xaafd0c(0x197));},0xbb8);}),userInput[_0x4b892e(0x1cd)](_0x4b892e(0x1ac),_0x594351=>{const _0x17d909=_0x4b892e;if(_0x594351[_0x17d909(0x1b6)]==='Enter')sendBtn[_0x17d909(0x1ab)]();}),document[_0x4b892e(0x1af)](_0x4b892e(0x1b8))[_0x4b892e(0x1cd)](_0x4b892e(0x1ab),()=>{const _0x1d45a1=_0x4b892e;chatBox[_0x1d45a1(0x1b3)]=_0x1d45a1(0x1b7);}),document['querySelectorAll'](_0x4b892e(0x18c))[_0x4b892e(0x18f)](_0x2956ee=>{const _0x39a203=_0x4b892e;_0x2956ee[_0x39a203(0x1cd)](_0x39a203(0x1ab),()=>{const _0x46540a=_0x39a203,_0x422c7b=_0x2956ee[_0x46540a(0x1a3)];displayMessage(_0x422c7b,_0x46540a(0x19a));const _0xe69ae3=document['createElement'](_0x46540a(0x1a6));_0xe69ae3[_0x46540a(0x1c7)]['add'](_0x46540a(0x199)),_0xe69ae3[_0x46540a(0x1b3)]=_0x46540a(0x1b1),chatBox[_0x46540a(0x1a9)](_0xe69ae3),chatBox[_0x46540a(0x1b4)]=chatBox['scrollHeight'],setTimeout(()=>{const _0x2b1d1c=_0x46540a;_0xe69ae3[_0x2b1d1c(0x1a0)]();const _0x79b308=getAIResponse(_0x422c7b);displayMessage(_0x79b308,'bot');},0xbb8);});}),document[_0x4b892e(0x1a1)]('ai-info-trigger')[_0x4b892e(0x1cd)](_0x4b892e(0x1ab),_0x5a0d19=>{const _0x5bafdd=_0x4b892e;_0x5a0d19['preventDefault']();const _0xe42571=document[_0x5bafdd(0x1a1)](_0x5bafdd(0x1bd));_0xe42571[_0x5bafdd(0x188)]['display']='block',setTimeout(()=>{const _0x345e3f=_0x5bafdd;_0xe42571[_0x345e3f(0x188)][_0x345e3f(0x1c3)]='none';},0xbb8);});const chatBox=document['getElementById']('chat-box');function _0x5af9(){const _0x42d613=['14504ifbyca','7KXXShy','75162djkbKx','bot','The\x20capital\x20of\x20Rwanda\x20is\x20Kigali\x20🏙️.','typing-indicator','user','Kevin\x20is\x20my\x20creator\x20—\x20he\x20built\x20me\x20to\x20be\x20helpful,\x20stylish,\x20and\x20intelligent!','I’ll\x20need\x20to\x20look\x20into\x20that\x20—\x20sounds\x20cool!','The\x20capital\x20of\x20Kenya\x20is\x20Nairobi\x20🌇.','floor','includes','remove','getElementById','how\x20are\x20you','innerText','scrollHeight','is\x20aperson\x20who\x20create\x20me\x20brother','div','🌍\x20There\x20are\x20195\x20countries\x20in\x20the\x20world!\x20Would\x20you\x20like\x20to\x20know\x20about\x20a\x20specific\x20one?','length','appendChild','user-message','click','keypress','💛\x20JavaScript\x20is\x20the\x20language\x20of\x20the\x20web\x20—\x20it\x20makes\x20websites\x20interactive\x20and\x20dynamic.','Hmm\x20🤔,\x20I’m\x20not\x20sure\x20about\x20that\x20yet,\x20but\x20I’ll\x20learn\x20soon!','querySelector','add','<span></span><span></span><span></span>','4yOTQeN','innerHTML','scrollTop','developer','key','<div\x20class=\x22bot-message\x22>Thanks\x20for\x20chatting!\x20👋</div>','.done-btn','🐍\x20Python\x20is\x20a\x20popular\x20programming\x20language\x20used\x20for\x20web\x20development,\x20data\x20science,\x20AI,\x20and\x20automation.','☿\x20Mercury\x20is\x20the\x20smallest\x20planet\x20and\x20the\x20closest\x20one\x20to\x20the\x20Sun.','Hey!\x20😊\x20How\x20are\x20you\x20doing?','🇷🇼\x20Rwanda\x20is\x20a\x20country\x20in\x20East\x20Africa,\x20known\x20as\x20the\x20Land\x20of\x20a\x20Thousand\x20Hills.','ai-warning','random','9440SQXGcx','6294376ySjCkC','23380fSioRQ','639opJBVT','display','toLowerCase','country','trim','classList','4EXSvjS','value','591879Sbjrni','62281mIuxLg','AI\x20stands\x20for\x20Artificial\x20Intelligence\x20—\x20it’s\x20when\x20computers\x20can\x20think\x20or\x20learn\x20like\x20humans\x20🤖.','addEventListener','style','In\x20Python,\x20the\x20range()\x20function\x20generates\x20a\x20sequence\x20of\x20numbers,\x20often\x20used\x20in\x20loops.','who\x20are\x20you','Hello\x20there\x20👋!\x20I\x27m\x20KevinAI,\x20your\x20assistant.\x20How\x20can\x20I\x20help\x20you\x20today?','.suggestions\x20button','createElement','who\x20made\x20you','forEach','creator','The\x20area\x20of\x20a\x20square\x20is\x20calculated\x20using\x20A\x20=\x20side\x20×\x20side.','My\x20name\x20is\x20KevinAI\x20🤖\x20—\x20your\x20smart\x20assistant.','🇰🇪\x20Kenya\x20is\x20an\x20East\x20African\x20country\x20famous\x20for\x20safaris\x20and\x20the\x20Great\x20Rift\x20Valley.'];_0x5af9=function(){return _0x42d613;};return _0x5af9();}function displayMessage(_0x43e7d9,_0x39f75d){const _0x3c449c=_0x4b892e,_0x35c428=document[_0x3c449c(0x18d)](_0x3c449c(0x1a6));_0x35c428[_0x3c449c(0x1c7)][_0x3c449c(0x1b0)](_0x39f75d==='user'?_0x3c449c(0x1aa):'bot-message'),_0x35c428[_0x3c449c(0x1a3)]=_0x43e7d9,chatBox[_0x3c449c(0x1a9)](_0x35c428),chatBox['scrollTop']=chatBox['scrollHeight'];}
+
+
+</script>
+
+</body>
+</html>
